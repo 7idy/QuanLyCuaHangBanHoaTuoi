@@ -1,0 +1,22 @@
+﻿@using QLCuaHangBanHoa.Models;
+
+@model List<CTHOADON>
+
+<table class="table">
+    <tr>
+        <th>Mã sản phẩm</th>
+        <th>Tên</th>
+        <th>Số lượng</th>
+        <th>Đơn giá</th>
+    </tr>
+
+    @foreach (var ct in Model)
+    {
+        <tr>
+            <td>@ct.maSP</td>
+            <td>@ct.SANPHAM.tenSP</td>
+            <td>@ct.soLuong</td>
+            <td>@ct.SANPHAM.donGia</td>
+        </tr>
+    }
+</table> 

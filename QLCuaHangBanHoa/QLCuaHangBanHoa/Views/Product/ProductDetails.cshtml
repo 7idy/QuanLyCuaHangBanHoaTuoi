@@ -1,0 +1,63 @@
+﻿@using QLCuaHangBanHoa.Models;
+@{
+    ViewBag.Title = "ProductDetails";
+    Layout = "~/Views/_LayoutPage.cshtml";
+    var lst = ViewBag.dsSP as List<SANPHAM>; /* Lấy ds sản phẩm cùng loại */ 
+}
+
+@* Lấy 1 sản phẩm *@
+@model SANPHAM 
+
+<div class="container-fluid" style="margin-top: 140px">
+    @* Tiêu đề *@
+    <div class="row mb-3">
+        <div class="col-md-12 text-center">
+            <h4 class="p-2" style="color: #400028; background-color: #ffc3e8;">
+                CHI TIẾT SẢN PHẨM
+            </h4>
+        </div>
+    </div>
+    @* Thông tin sản phẩm *@
+    <div class="row">
+        @* Hình ảnh *@
+        <div class="col-md-4 text-center justify-content-md-center">
+            <img src="~/Content/images/@Model.hinhAnh" class="w-75" />
+        </div>
+        @* Thông tin chi tiết *@
+        <div class="col-md-8">
+            <h5>@Model.tenSP</h5>
+            <p>@Model.moTa</p>
+            <p>Giá: <text class="text-danger">@Model.donGia</text></p>
+            <a href="@Url.Action("ThemGioHang", "Cart",new {@maSP=Model.maSP,@strURL=Request.Url.ToString()})">
+                <input value="Mua" class="btn btn-light" type="submit" style="color: black;" />
+            </a>
+        </div>
+    </div>
+    @* Sản phẩm tương tự *@
+    <div class="row mt-5">
+        @* Tiêu đề *@
+        <div class="col-md-12 text-center">
+            <h4 class="p-2" style="color: #400028;  background-color: #ffc3e8;">
+                Sản phẩm cùng loại
+            </h4>
+        </div>
+        @* Thông tin *@
+        <div class="row">
+            <div>
+                <div class="row text-center">
+                    @foreach(var sp in lst)
+                    {
+                        <div class="col-md-3 mb-2">
+                            <img src="~/Content/images/@sp.hinhAnh" class="w-50" />
+                            <h6 class="card-title">@sp.tenSP</h6>
+                            <a href="/Product/ProductDetails/@sp.maSP" class="btn btn-light" style="color: black;">
+                                Chi tiết
+                            </a>
+                            <hr style="color: #8e8e8e" />
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

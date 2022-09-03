@@ -1,0 +1,44 @@
+﻿
+@{
+    ViewBag.Title = "Product";
+    Layout = "~/Views/_LayoutPage.cshtml";
+}
+
+<div class="container-fluid" style="margin-top: 140px;">
+    @* Sản phẩm *@
+    <div class="row">
+        @* Loại sản phẩm *@
+        <div class="col-md-3">
+            <p class="ms-2" style="color: #400028">Loại sản phẩm</p>
+            @Html.Action("showLSP", "Product")
+        </div>
+        @* Sản phẩm *@
+    <div class="col-md-9">
+        @* Tiêu đề *@
+        <h4 style="color: #400028; background-color: #ffc3e8" class="text-center mb-3 p-2">
+            CÁC SẢN PHẨM
+        </h4>
+        <div>
+            <div class="row text-center">
+                @foreach (var sp in Model)
+                {
+                    <div class="col-md-3 text-center">
+                        @* Ảnh minh họa *@
+                        <img class="card-img-top w-50" src="~/Content/images/@sp.hinhAnh" />
+                        <div class="card-body">
+                            @* Tên sản phẩm *@
+                            <h6 class="card-title">@sp.tenSP</h6>
+                            <text style="font-size: small">Giá: </text>
+                            <text style="font-size: small" class="text-danger">@sp.donGia</text><br />
+                            @* Chi tiết, chọn mua *@
+                        <div class="justify-content-md-center mt-1">
+                            <a href="/Product/ProductDetails/@sp.maSP" style="font-size: small; color: black" class="btn btn-light">Chi tiết</a>
+                        </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+    </div>
+</div>

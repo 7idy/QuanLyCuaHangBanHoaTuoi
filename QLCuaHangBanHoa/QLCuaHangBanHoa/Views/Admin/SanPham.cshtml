@@ -1,0 +1,55 @@
+﻿@using QLCuaHangBanHoa.Models
+@{
+    ViewBag.Title = "SanPham";
+    Layout = "~/Views/_LayoutPageAdmin.cshtml";
+}
+
+@model List<SANPHAM>
+
+<div class="container-fluid mb-5" style="margin-top: 140px;">
+    @* Tiêu đề *@
+    <div class="row mb-3">
+        <div class="col-md-12 text-center">
+            <h4 class="p-2" style="color: #400028; background-color: #ffc3e8;">
+                DANH MỤC SẢN PHẨM
+            </h4>
+        </div>
+    </div>
+    @* Thông tin *@
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <form action="/Bill/GiaoHang" method="post">
+                <table class="table">
+                    <tr>
+                        <th>Mã SP</th>
+                        <th>Tên SP</th>
+                        <th>Mã loại</th>
+                        <th>Giá bán</th>
+                        <th>Giới thiệu</th>
+                        <th>Hình ảnh minh họa</th>
+                        <th >Số lượng tồn</th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.maSP</td>
+                            <td>@item.tenSP</td>
+                            <td>@item.maLSP</td>
+                            <td>@String.Format("{0:#,##}", item.donGia) VND</td>
+                            <td>@item.moTa</td>
+                            <td><img src="~/Content/images/@item.hinhAnh" class="w-75" /></td>
+                            <td>@item.sLTon</td>
+                            <td><a href="#">Chi tiết</a></td>
+                            <td><a href="#">Xóa</a></td>
+                            <td><a href="#">Sửa</a></td>
+                        </tr>
+                    }
+                </table>
+            </form>
+        </div>
+    </div>
+</div>

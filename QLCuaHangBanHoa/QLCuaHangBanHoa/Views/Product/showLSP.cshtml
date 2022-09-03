@@ -1,0 +1,12 @@
+﻿@using QLCuaHangBanHoa.Models;
+
+@model List<LOAISP>
+<ul class="nav flex-column">
+    @foreach (var sp in Model)
+    {
+        <li class="nav" style="color: #400028">
+            @Html.ActionLink(sp.tenLSP, "showSPByLSP", "Product", new { maLoai = @sp.maLSP }, 
+                                                                  new { @class = "nav-link" })
+        </li>
+    }
+</ul>

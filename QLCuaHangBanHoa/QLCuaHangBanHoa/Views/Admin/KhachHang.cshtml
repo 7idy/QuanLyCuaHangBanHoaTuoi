@@ -1,0 +1,46 @@
+﻿@using QLCuaHangBanHoa.Models
+@{
+    ViewBag.Title = "KhachHang";
+    Layout = "~/Views/_LayoutPageAdmin.cshtml";
+}
+
+@model List<KHACHHANG>
+
+<div class="container-fluid mb-5" style="margin-top: 140px">
+    @* Tiêu đề *@
+    <div class="row mb-3">
+        <div class="col-md-12 text-center">
+            <h4 class="p-2" style="color: #400028; background-color: #ffc3e8;">
+                DANH SÁCH KHÁCH HÀNG
+            </h4>
+        </div>
+    </div>
+    @* Thông tin *@
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <form action="#" method="post">
+                <table class="table">
+                    <tr>
+                        <th>User name</th>
+                        <th>Họ tên</th>
+                        <th>Ngày sinh</th>
+                        <th>Số điện thoại</th>
+                        <th>Địa chỉ</th>
+                        <th>Email</th>
+                    </tr>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.userName</td>
+                            <td>@item.tenKH</td>
+                            <td>@item.ngaySinh</td>
+                            <td>@item.sDT</td>
+                            <td>@item.diaChi</td>
+                            <td>@item.email</td>
+                        </tr>
+                    }
+                </table>
+            </form>
+        </div>
+    </div>
+</div>

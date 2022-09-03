@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewBag.Title = "Find";
+    Layout = "~/Views/_LayoutPage.cshtml";
+}
+
+<div class="container-fluid" style="margin-top: 140px; margin-bottom: 150px">
+    @* Tiêu đề *@
+    <div class="row mb-3">
+        <div class="col-md-12 text-center">
+            <h4 class="p-2" style="color: #400028; background-color: #ffc3e8;">
+                TÌM KIẾM SẢN PHẨM
+            </h4>
+        </div>
+    </div>
+    @* Tìm kiếm *@
+    <div class="row" style="margin-top: 75px;">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <form action="/Product/FindHandle" method="post">
+                <div class="container text-center">
+                    <table cellpadding="2" width="500" cellspacing="7">
+                        <tr>
+                            <td>Tên sản phẩm cần tìm</td>
+                            <td><input type="text" name="txtTuKhoa" class="form-control" /></td>
+                        </tr>
+                        <tr>
+                            <td>Loại sản phẩm</td>
+                            <td class="dropdown mt-3">@Html.DropDownList("maLSP")</td>
+                        </tr>
+                    </table>
+                    <input type="submit" value="Search" class="btn btn-light text-center justify-content-md-end mt-4" style="color: black" />
+                </div>
+            </form>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+</div>
